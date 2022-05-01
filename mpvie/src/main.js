@@ -3,11 +3,10 @@ import App from './App.vue'
 import $ from 'jquery'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './assets/css/style.css'
-// import 'vue3-carousel/dist/carousel.css'
-// import { Carousel, Slide} from 'vue3-carousel'
-// import Carousel from "vue3-carousel"; // 引入
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
 // const app = createApp(App)
 // app.use(Carousel).mount('#app') // 使用
-createApp(App).mount('#app')
+createApp(App).use(ElementPlus, { size: 'small', zIndex: 3000 }).mount('#app')
 // 全局注册 $
 createApp.prototype.$ = $
