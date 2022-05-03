@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import $ from 'jquery'
+import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './assets/css/style.css'
 import ElementPlus from 'element-plus'
