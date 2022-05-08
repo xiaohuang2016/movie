@@ -84,7 +84,7 @@
             </div>
             <div class="clearfix"></div>
           </div>
-          <!-- <moviePage></moviePage> -->
+          <moviePage></moviePage>
         </div>
       </div>
     </div>
@@ -95,10 +95,10 @@
 <script>
 import headerPage from "@/components/base/header.vue"
 import footerPage from "@/components/base/footer.vue"
-// import moviePage from "@/components/base/movie.vue"
+import moviePage from "@/components/base/movie.vue"
 export default {
   name: "HelloWorld",
-  components:{headerPage,footerPage},
+  components:{headerPage,footerPage,moviePage},
   data() {
     return {
       value: 3.7,

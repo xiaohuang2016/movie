@@ -1,5 +1,6 @@
 <template>
   <div class="box_2 featurd_movie">
+    <button @click="getData">获取数据</button>
     <el-row :gutter="21">
       <el-col :span="10">
         <div class="grid_3">
@@ -30,7 +31,7 @@
                   </div>
                   <div class="grid_2 col_1">
                     <img
-                      src="../assets/images/pic2.jpg"
+                      src="@/assets/images/pic2.jpg"
                       class="img-responsive"
                       alt=""
                     />
@@ -85,7 +86,7 @@
                   <div class="m_5">
                     <a href="single.html"
                       ><img
-                        src="../assets/images/pic3.jpg"
+                        src="@/assets/images/pic3.jpg"
                         class="img-responsive"
                         alt=""
                     /></a>
@@ -98,7 +99,7 @@
           <div class="row_2">
             <a href="single.html"
               ><img
-                src="../assets/images/pic4.jpg"
+                src="@/assets/images/pic4.jpg"
                 class="img-responsive"
                 alt=""
             /></a>
@@ -113,7 +114,7 @@
                 <a href="single.html">
                   <div class="grid_2">
                     <img
-                      src="../assets/images/pic6.jpg"
+                      src="@/assets/images/pic6.jpg"
                       class="img-responsive"
                       alt=""
                     />
@@ -139,7 +140,7 @@
                 <a href="single.html">
                   <div class="grid_2">
                     <img
-                      src="../assets/images/pic7.jpg"
+                      src="@/assets/images/pic7.jpg"
                       class="img-responsive"
                       alt=""
                     />
@@ -207,7 +208,7 @@
               <div class="m_6">
                 <a href="single.html">
                   <img
-                    src="../assets/images/pic8.jpg"
+                    src="@/assets/images/pic8.jpg"
                     class="img-responsive"
                     alt=""
                   />
@@ -219,7 +220,7 @@
       </el-col>
       <el-col :span="4">
         <div class="grid_2">
-          <img src="../assets/images/pic9.jpg" class="img-responsive" alt="" />
+          <img src="@/assets/images/pic9.jpg" class="img-responsive" alt="" />
           <div class="caption1">
             <div class="action_part">
               <el-row :gutter="10">
@@ -249,7 +250,7 @@
               </li>
               <li>
                 Rating :
-                <p><img src="../assets/images/rating1.png" alt="" /></p>
+                <p><img src="@/assets/images/rating1.png" alt="" /></p>
               </li>
               <li>Release :Mar 15, 2015</li>
               <div class="clearfix"></div>
@@ -257,7 +258,7 @@
             <div class="m_8">
               <a href="single.html"
                 ><img
-                  src="../assets/images/pic10.jpg"
+                  src="@/assets/images/pic10.jpg"
                   class="img-responsive"
                   alt=""
               /></a>
@@ -271,7 +272,22 @@
 </template>
 
 <script>
-export default {
-  name: "moviePage"
-};
+import { hotMovieListApi } from '@/components/service/api';// 导入我们的api接口
+export default {        
+    name: 'moviePage',
+    methods: {
+      getData:function () {
+          hotMovieListApi({                    
+          type:'movie',
+          tag:'恐怖',
+          sort:'time',
+          page_limit:20,
+          page_start:0              
+      }).then(res => {
+          // 获取数据成功后的其他操作
+                      
+      })            
+    }
+  }
+}
 </script>
