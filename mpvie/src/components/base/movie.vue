@@ -1,8 +1,7 @@
 <template>
   <div class="box_2 featurd_movie">
-
-  <el-row :gutter="21">
     <button @click="getData">获取数据</button>
+    
     <el-row :gutter="21">
       <el-col :span="10">
         <div class="grid_3">
@@ -269,7 +268,7 @@
         </div>
       </el-col>
       <div class="clearfix"></div>
-    </el-row> -->
+    </el-row> 
   </div>
 </template>
 

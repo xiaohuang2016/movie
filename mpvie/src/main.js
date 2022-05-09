@@ -11,5 +11,5 @@ const app = createApp(App)
 // app.use(store).use().mount('#app')
 app.use(ElementPlus, { size: 'small', zIndex: 3000 }).mount('#app')
     //注册全局方法
-    app.config.globalProperties.axios = Axios;
+    app.config.globalProperties.axios = axios;
 // createApp.prototype.$ = $

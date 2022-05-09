@@ -11,15 +11,15 @@ const service = axios.create({
   timeout: 3 * 1000
 })
 // 环境的切换
-if (process.env.NODE_ENV == 'development') {
-  axios.defaults.baseURL = 'https://www.baidu.com';
-}
-else if (process.env.NODE_ENV == 'debug') {
-  axios.defaults.baseURL = 'https://www.ceshi.com';
-}
-else if (process.env.NODE_ENV == 'production') {
-  axios.defaults.baseURL = 'https://www.production.com';
-}
+// if (process.env.NODE_ENV == 'development') {
+//   axios.defaults.baseURL = 'https://www.baidu.com';
+// }
+// else if (process.env.NODE_ENV == 'debug') {
+//   axios.defaults.baseURL = 'https://www.ceshi.com';
+// }
+// else if (process.env.NODE_ENV == 'production') {
+//   axios.defaults.baseURL = 'https://www.production.com';
+// }
 // 2.请求拦截器
 service.interceptors.request.use(config => {
   //发请求前做的一些处理，数据转化，配置请求头，设置token,设置loading等，根据需求去添加

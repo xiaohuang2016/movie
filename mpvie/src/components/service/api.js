@@ -5,7 +5,7 @@ import http from './http'
  *  @param '/testIp'代表vue-cil中config，index.js中配置的代理
  */
 import {get, post } from './http'
-export const hotMovieListApi = p => get('/j/search_subjects', p);
+export const hotMovieListApi = p => get('/api/j/search_subjects', p);
 // const MOVIE_API = {
 //     // https://movie.douban.com
 //     //获取banner海报
