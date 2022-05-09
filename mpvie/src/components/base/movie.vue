@@ -1,6 +1,6 @@
 <template>
   <div class="box_2 featurd_movie">
-    <el-row :gutter="21">
+    <!-- <el-row :gutter="21">
       <el-col :span="10">
         <div class="grid_3">
           <div class="row_1">
@@ -266,12 +266,42 @@
         </div>
       </el-col>
       <div class="clearfix"></div>
-    </el-row>
+    </el-row> -->
   </div>
 </template>
 
 <script>
+ import {getListAPI,postFormAPI, putSomeAPI, deleteListAPI} from '@/components/service/api'
 export default {
-  name: "moviePage"
+  name: "moviePage",
+  methods: {
+      //promise调用，链式调用， getList()括号内只接受参数；
+      //   get不传参
+      getList() {
+        getListAPI({
+          type:'tv',
+          tag:'热门',
+          page_limit:50,
+          page_start:0
+        }).then(res => console.log(res)).catch(err => console.log(err))
+      },
+		//post传参
+      // postForm(formData) {
+      //   let data = formData
+      //   postFormAPI(data).then(res => console.log(res)).catch(err => console.log(err))
+      // },
+
+      // //async await同步调用
+      // async postForm(formData) {
+      //   const postRes = await postFormAPI(formData)
+      //   const putRes = await putSomeAPI({data: 'putTest'})
+      //   const deleteRes = await deleteListAPI(formData.name)
+      //   // 数据处理
+      //   console.log(postRes);
+      //   console.log(putRes);
+      //   console.log(deleteRes);
+      // },
+   }
+
 };
 </script>
