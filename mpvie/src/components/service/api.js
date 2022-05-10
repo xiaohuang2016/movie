@@ -6,6 +6,8 @@ import http from './http'
  */
 import {get, post } from './http'
 export const hotMovieListApi = p => get('/api/j/search_subjects', p);
+export const terrorMovieListApi = p => get('/api/j/search_subjects', p);
+export const popularMovieListApi = p => get('/api/j/search_subjects', p);
 // const MOVIE_API = {
 //     // https://movie.douban.com
 //     //获取banner海报

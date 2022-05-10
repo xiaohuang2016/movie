@@ -11,6 +11,7 @@ p {margin: 0;}
 html, body{
 	font-family: 'Roboto Condensed', sans-serif;
 	background:#3f444e;
+	list-style: none;
 }
 body a{
 	transition:0.5s all;
@@ -532,7 +533,7 @@ i.icon1, i.icon2, i.icon3{
 height: 20px;
 background: url(../images/img_sprite.png) -7px -42px;
 float: left;
-margin-right: 8%;
+margin:3% 8% 0 0;
 }
 ul.list_2 li{
 	display: inline-block;
@@ -684,9 +685,9 @@ ul.list_4 li, ul.list_6 li{
 	color:#3f444e;
 	margin:0 auto;
 	font-weight: 600;
-	font-size: 0.9em;
+	font-size: 1.1em;
 	display:flex;
-	line-height: 2em;
+	line-height: 2.2em;
 }
 span.m_4{
 	font-weight:500;

@@ -1,7 +1,5 @@
 <template>
   <div class="box_2 featurd_movie">
-    <button @click="getData">获取数据</button>
-    
     <el-row :gutter="21">
       <el-col :span="10">
         <div class="grid_3">
@@ -9,45 +7,20 @@
             <el-col :span="12">
               <div class="grid_4">
                 <a href="single.html">
-                  <div class="grid_2">
-                    <img
-                      src="@/assets/images/pic1.jpg"
-                      class="img-responsive"
-                      alt=""
-                    />
+                  <div :class="[index === 1 ? 'grid_2 col_1':'grid_2']"  v-for="(item,index) in movieList" :key="index" >
+                    <img :src="item.cover" class="img-responsive" />
                     <div class="caption1">
                       <div class="action_part">
                         <el-row :gutter="10">
-                          <el-col :span="18"
-                            ><li><i class="icon5"> </i>3,548</li></el-col
-                          >
-                          <el-col :span="6"
-                            ><li><i class="icon4"> </i></li
+                          <el-col :span="12"
+                            ><li><i class="icon5"> </i>{{item.cover_x}}</li></el-col>
+                          <el-col :span="12"
+                            ><li><i class="icon4"> </i>{{item.cover_y}}</li
                           ></el-col>
                         </el-row>
                       </div>
 
-                      <p class="m_3">Guardians of the Galaxy</p>
-                    </div>
-                  </div>
-                  <div class="grid_2 col_1">
-                    <img
-                      src="@/assets/images/pic2.jpg"
-                      class="img-responsive"
-                      alt=""
-                    />
-                    <div class="caption1">
-                      <div class="action_part">
-                        <el-row :gutter="10">
-                          <el-col :span="18"
-                            ><li><i class="icon5"> </i>3,548</li></el-col
-                          >
-                          <el-col :span="6"
-                            ><li><i class="icon4"> </i></li
-                          ></el-col>
-                        </el-row>
-                      </div>
-                      <p class="m_3">Guardians of the Galaxy</p>
+                      <p class="m_3">{{item.title}}</p>
                     </div>
                   </div>
                 </a>
@@ -55,42 +28,37 @@
             </el-col>
             <el-col :span="12">
               <div class="grid_7">
-                <div class="col_2">
+                <div class="col_2" v-for="(item,index) in terrorMovieList" :key="index" >
                   <ul class="list_4">
                     <li>
                       <i class="icon1"> </i>
-                      <p>2,548</p>
+                      <p>{{item.cover_x}}</p>
                     </li>
                     <li>
                       <i class="icon2"> </i>
-                      <p>215</p>
+                      <p>{{item.cover_x}}</p>
                     </li>
                     <li>
                       <i class="icon3"> </i>
-                      <p>546</p>
+                      <p>{{item.cover_x}}</p>
                     </li>
                     <li>
                       Rating
                       <p>
                         <el-rate
-                          v-model="ratingValue"
-                          disabled
-                          :colors="{ colors }"
-                          score-template="{ratingValue}"
-                        >
-                        </el-rate>
+                        v-model="item.rate"
+                        disabled
+                        :colors="{ colors }"
+                        score-template="{{item.rate}}"
+                      >
+                      </el-rate>
                       </p>
                     </li>
                     <li>Release Date : Mar 15, 2015</li>
                     <div class="clearfix"></div>
                   </ul>
                   <div class="m_5">
-                    <a href="single.html"
-                      ><img
-                        src="@/assets/images/pic3.jpg"
-                        class="img-responsive"
-                        alt=""
-                    /></a>
+                    <a href="single.html"><img :src="item.cover"  class="img-responsive"/></a>
                   </div>
                 </div>
               </div>
@@ -98,12 +66,9 @@
             <div class="clearfix"></div>
           </div>
           <div class="row_2">
-            <a href="single.html"
-              ><img
-                src="@/assets/images/pic4.jpg"
-                class="img-responsive"
-                alt=""
-            /></a>
+            <a href="single.html">
+              <img src="@/assets/images/pic4.jpg"
+                class="img-responsive"/></a>
           </div>
         </div>
       </el-col>
@@ -111,32 +76,28 @@
         <div class="content_right">
           <div class="row_3">
             <el-col :span="12">
-              <div class="content_right-box">
+              <div :class="[index === 1 ? 'grid_5':'content_right-box']"  v-for="(item,index) in movieList" :key="index" >
                 <a href="single.html">
                   <div class="grid_2">
-                    <img
-                      src="@/assets/images/pic6.jpg"
-                      class="img-responsive"
-                      alt=""
-                    />
+                      <img :src="item.cover" class="img-responsive" />
                     <div class="caption1">
                       <div class="action_part">
                         <el-row :gutter="10">
                           <el-col :span="18"
-                            ><li><i class="icon5"> </i>3,548</li></el-col
+                            ><li><i class="icon5"> </i>{{item.cover_x}}</li></el-col
                           >
                           <el-col :span="6"
                             ><li><i class="icon4"> </i></li
                           ></el-col>
                         </el-row>
                       </div>
-                      <p class="m_3">Guardians of the Galaxy</p>
+                      <p class="m_3">{{item.title}}</p>
                     </div>
                   </div>
                 </a>
               </div>
             </el-col>
-            <el-col :span="12">
+            <!-- <el-col :span="12">
               <div class="grid_5">
                 <a href="single.html">
                   <div class="grid_2">
@@ -161,7 +122,7 @@
                   </div>
                 </a>
               </div>
-            </el-col>
+            </el-col> -->
             <div class="clearfix"></div>
           </div>
           <div class="video">
@@ -273,22 +234,59 @@
 </template>
 
 <script>
-import { hotMovieListApi } from '@/components/service/api';// 导入我们的api接口
+import { hotMovieListApi,terrorMovieListApi,popularMovieListApi } from '@/components/service/api';// 导入我们的api接口
 export default {        
     name: 'moviePage',
-    methods: {
-      getData:function () {
-          hotMovieListApi({                    
+    data(){
+       return {
+         ratingValue:3.8,
+           movieList:[],
+           terrorMovieList:[],
+       }
+    },
+    beforeCreate() {
+       hotMovieListApi({ 
+          type:'movie',
+          tag:'华语',
+          sort:'time',
+          page_limit:2,
+          page_start:0              
+      }).then(res => {
+          this.movieList = res.subjects;
+      })
+    terrorMovieListApi({ 
           type:'movie',
           tag:'恐怖',
           sort:'time',
-          page_limit:20,
+          page_limit:1,
+          page_start:0              
+      }).then(res => {
+        this.terrorMovieList = res.subjects;
+          // 获取数据成功后的其他操作
+          // console.log('创建前-挂在', this.$el)
+          // console.log('创建前-data', res.subjects)
+      })
+       popularMovieListApi({ 
+          type:'movie',
+          tag:'冷门佳片',
+          sort:'time',
+          page_limit:2,
           page_start:0              
       }).then(res => {
           // 获取数据成功后的其他操作
-                      
-      })            
-    }
+          // console.log('创建前-挂在', this.$el)
+          // console.log('创建前-data', res.subjects)
+      })      
+    },
+    methods: {
+      group: function(array, subGroupLength) {
+          let index = 0;
+          let newArray = [];
+          while(index < array.length) {
+              newArray.push(array.slice(index, index += subGroupLength));
+          }
+        return newArray;
+      }
   }
 }
 </script>
