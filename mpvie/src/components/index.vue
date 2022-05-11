@@ -6,7 +6,7 @@
         <div class="slider">
           <div class="callbacks_container">
             <div class="rslides" id="slider">
-              <el-carousel trigger="click" :autoplay="false">
+              <el-carousel trigger="click" :autoplay="false" height="500px">
                 <el-carousel-item v-for="item in slides" :key="item">
                   <img :src="item.src" class="img-responsive" />
                   <div class="banner_desc">

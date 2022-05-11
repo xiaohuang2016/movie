@@ -1,7 +1,5 @@
 <template>
   <div class="box_2 featurd_movie">
-    <button @click="getData">获取数据</button>
-    
     <el-row :gutter="21">
       <el-col :span="10">
         <div class="grid_3">
@@ -9,45 +7,20 @@
             <el-col :span="12">
               <div class="grid_4">
                 <a href="single.html">
-                  <div class="grid_2">
-                    <img
-                      src="@/assets/images/pic1.jpg"
-                      class="img-responsive"
-                      alt=""
-                    />
+                  <div :class="[index == 1 ? 'grid_2 col_1' : 'grid_2']" v-for="(item,index) in terrMovieList" :key="index" >
+                    <img :src="item.img" class="img-responsive"/>
                     <div class="caption1">
                       <div class="action_part">
                         <el-row :gutter="10">
-                          <el-col :span="18"
-                            ><li><i class="icon5"> </i>3,548</li></el-col
-                          >
-                          <el-col :span="6"
-                            ><li><i class="icon4"> </i></li
+                          <el-col :span="14"
+                            ><li><i class="icon5"> </i>{{item.wish}}</li></el-col>
+                          <el-col :span="10"
+                            ><li><i class="icon4"> </i>{{item.showst}}</li
                           ></el-col>
                         </el-row>
                       </div>
 
-                      <p class="m_3">Guardians of the Galaxy</p>
-                    </div>
-                  </div>
-                  <div class="grid_2 col_1">
-                    <img
-                      src="@/assets/images/pic2.jpg"
-                      class="img-responsive"
-                      alt=""
-                    />
-                    <div class="caption1">
-                      <div class="action_part">
-                        <el-row :gutter="10">
-                          <el-col :span="18"
-                            ><li><i class="icon5"> </i>3,548</li></el-col
-                          >
-                          <el-col :span="6"
-                            ><li><i class="icon4"> </i></li
-                          ></el-col>
-                        </el-row>
-                      </div>
-                      <p class="m_3">Guardians of the Galaxy</p>
+                      <p class="m_3">{{item.nm}}</p>
                     </div>
                   </div>
                 </a>
@@ -55,42 +28,28 @@
             </el-col>
             <el-col :span="12">
               <div class="grid_7">
-                <div class="col_2">
+                <div class="col_2" v-for="(item,index) in popMovieList" :key="index">
                   <ul class="list_4">
                     <li>
                       <i class="icon1"> </i>
-                      <p>2,548</p>
+                      <p>{{item.wish}}</p>
                     </li>
                     <li>
                       <i class="icon2"> </i>
-                      <p>215</p>
+                      <p>{{item.showst}}</p>
                     </li>
                     <li>
                       <i class="icon3"> </i>
-                      <p>546</p>
+                      <p>{{item.sc}}</p>
                     </li>
                     <li>
-                      Rating
-                      <p>
-                        <el-rate
-                          v-model="ratingValue"
-                          disabled
-                          :colors="{ colors }"
-                          score-template="{ratingValue}"
-                        >
-                        </el-rate>
-                      </p>
+                     评分:<p>{{item.sc}}</p>
                     </li>
-                    <li>Release Date : Mar 15, 2015</li>
+                    <li>上映:{{item.comingTitle}}</li>
                     <div class="clearfix"></div>
                   </ul>
                   <div class="m_5">
-                    <a href="single.html"
-                      ><img
-                        src="@/assets/images/pic3.jpg"
-                        class="img-responsive"
-                        alt=""
-                    /></a>
+                    <a href="single.html"><img :src="item.img" class="img-responsive"/></a>
                   </div>
                 </div>
               </div>
@@ -99,10 +58,7 @@
           </div>
           <div class="row_2">
             <a href="single.html"
-              ><img
-                src="@/assets/images/pic4.jpg"
-                class="img-responsive"
-                alt=""
+              ><img src="@/assets/images/pic4.jpg" class="img-responsive" alt=""
             /></a>
           </div>
         </div>
@@ -110,58 +66,26 @@
       <el-col :span="10">
         <div class="content_right">
           <div class="row_3">
+            <div v-for="(item,index) in chineseMovieList" :key="index">
             <el-col :span="12">
-              <div class="content_right-box">
+              <div :class="[index == 0 ? 'grid_5' : 'content_right-box']">
                 <a href="single.html">
                   <div class="grid_2">
-                    <img
-                      src="@/assets/images/pic6.jpg"
-                      class="img-responsive"
-                      alt=""
-                    />
+                    <img :src="item.img" class="img-responsive"/>
                     <div class="caption1">
                       <div class="action_part">
                         <el-row :gutter="10">
-                          <el-col :span="18"
-                            ><li><i class="icon5"> </i>3,548</li></el-col
-                          >
-                          <el-col :span="6"
-                            ><li><i class="icon4"> </i></li
-                          ></el-col>
+                          <el-col :span="14"><li><i class="icon5"> </i>{{item.wish}}</li></el-col>
+                          <el-col :span="10"><li><i class="icon4"> </i>{{item.showst}}</li></el-col>
                         </el-row>
                       </div>
-                      <p class="m_3">Guardians of the Galaxy</p>
+                      <p class="m_3">{{item.nm}}</p>
                     </div>
                   </div>
                 </a>
               </div>
             </el-col>
-            <el-col :span="12">
-              <div class="grid_5">
-                <a href="single.html">
-                  <div class="grid_2">
-                    <img
-                      src="@/assets/images/pic7.jpg"
-                      class="img-responsive"
-                      alt=""
-                    />
-                    <div class="caption1">
-                      <div class="action_part">
-                        <el-row :gutter="10">
-                          <el-col :span="18"
-                            ><li><i class="icon5"> </i>3,548</li></el-col
-                          >
-                          <el-col :span="6"
-                            ><li><i class="icon4"> </i></li
-                          ></el-col>
-                        </el-row>
-                      </div>
-                      <p class="m_3">Guardians of the Galaxy</p>
-                    </div>
-                  </div>
-                </a>
-              </div>
-            </el-col>
+            </div>
             <div class="clearfix"></div>
           </div>
           <div class="video">
@@ -173,34 +97,27 @@
               allowfullscreen
             ></iframe>
           </div>
-          <div class="row_5">
-            <el-col :span="12">
+          <div class="row_5" v-for="(item,index) in japMovieList" :key="index">
+            <el-row :gutter="25">
+                 <el-col :span="12">
               <div class="col_2">
                 <ul class="list_4">
                   <li>
                     <i class="icon1"> </i>
-                    <p>2,548</p>
+                    <p>{{item.wish}}</p>
                   </li>
                   <li>
                     <i class="icon2"> </i>
-                    <p>215</p>
+                    <p>{{item.sc}}</p>
                   </li>
                   <li>
                     <i class="icon3"> </i>
-                    <p>546</p>
+                    <p>{{item.showst}}</p>
                   </li>
                   <li>
-                    Rating :
-                    <p>
-                      <el-rate
-                        v-model="ratingValue"
-                        disabled
-                        :colors="{ colors }"
-                        score-template="{ratingValue}"
-                      >
-                      </el-rate>
-                    </p>
+                    评分:<p>{{item.sc}}</p>
                   </li>
+                  <li>上映:<p>{{item.comingTitle}}</p></li>
                   <div class="clearfix"></div>
                 </ul>
               </div>
@@ -208,87 +125,113 @@
             <el-col :span="12">
               <div class="m_6">
                 <a href="single.html">
-                  <img
-                    src="@/assets/images/pic8.jpg"
-                    class="img-responsive"
-                    alt=""
-                  />
+                  <img :src="item.img" class="img-responsive" alt="" />
                 </a>
               </div>
             </el-col>
+            </el-row>
           </div>
         </div>
       </el-col>
       <el-col :span="4">
         <div class="grid_2">
-          <img src="@/assets/images/pic9.jpg" class="img-responsive" alt="" />
-          <div class="caption1">
-            <div class="action_part">
-              <el-row :gutter="10">
-                <el-col :span="18"
-                  ><li><i class="icon5"> </i>3,548</li></el-col
-                >
-                <el-col :span="6"
-                  ><li><i class="icon4"> </i></li
-                ></el-col>
-              </el-row>
+          <div v-for="(item,index) in newMovieList" :key="index">
+            <img :src="item.img" class="img-responsive" alt="" />
+            <div class="caption1">
+              <div class="action_part">
+                <el-row>
+                  <el-col :span="14"
+                    ><li><i class="icon5"> </i>{{item.wish}}</li></el-col
+                  >
+                  <el-col :span="10"
+                    ><li><i class="icon4"> </i>{{item.showst}}</li
+                  ></el-col>
+                </el-row>
+              </div>
+              <p class="m_3">{{item.nm}}</p>
             </div>
-            <p class="m_3">Guardians of the Galaxy</p>
           </div>
-          <div class="col_2 col_3">
+          <div class="col_2 col_3"  v-for="(item,index) in hotMovieList" :key="index">
             <ul class="list_4">
               <li>
                 <i class="icon1"> </i>
-                <p>2,548</p>
+                <p>{{item.wish}}</p>
               </li>
               <li>
                 <i class="icon2"> </i>
-                <p>215</p>
+                <p>{{item.showst}}</p>
               </li>
               <li>
                 <i class="icon3"> </i>
-                <p>546</p>
+                <p>{{item.showst}}</p>
               </li>
               <li>
-                Rating :
-                <p><img src="@/assets/images/rating1.png" alt="" /></p>
+                评分:
+                <p>{{item.sc}}</p>
               </li>
-              <li>Release :Mar 15, 2015</li>
+              <li>上映:{{item.comingTitle}}</li>
               <div class="clearfix"></div>
             </ul>
             <div class="m_8">
-              <a href="single.html"
-                ><img
-                  src="@/assets/images/pic10.jpg"
-                  class="img-responsive"
-                  alt=""
-              /></a>
+              <a href="single.html"><img :src="item.img" class="img-responsive" alt=""/></a>
             </div>
           </div>
         </div>
       </el-col>
       <div class="clearfix"></div>
-    </el-row> 
+    </el-row>
   </div>
 </template>
 
 <script>
-import { hotMovieListApi } from '@/components/service/api';// 导入我们的api接口
-export default {        
-    name: 'moviePage',
-    methods: {
-      getData:function () {
-          hotMovieListApi({                    
-          type:'movie',
-          tag:'恐怖',
-          sort:'time',
-          page_limit:20,
-          page_start:0              
-      }).then(res => {
-          // 获取数据成功后的其他操作
-                      
-      })            
+import { hotMovieListApi } from "@/components/service/api"; // 导入我们的api接口
+export default {
+  name: "moviePage",
+  data(){
+    return{
+      terrMovieList:[],
+      popMovieList:[],
+      chineseMovieList:[],
+      japMovieList:[],
+      newMovieList:[],
+      hotMovieList:[],
     }
-  }
-}
+  },
+  created() {
+    hotMovieListApi().then((res) => {
+      var terrMovieList =[],popMovieList = [],chineseMovieList=[],japMovieList=[],
+      newMovieList = [],hotMovieList=[];
+      var movieListData = res.movieList;
+      for(var i=0;i<=movieListData.length ;i++){
+        if(i<=1){
+         terrMovieList.push(movieListData[i])
+        }else if(i==2){
+           popMovieList.push(movieListData[i])
+        }else if(i==3){
+           japMovieList.push(movieListData[i])
+        }else if(i==4){
+           newMovieList.push(movieListData[i])
+        }else if(i==5){
+           hotMovieList.push(movieListData[i])
+        }else if(i>7 && i<10){
+            chineseMovieList.push(movieListData[i])
+        }
+      }
+       console.log("terrMovieList",terrMovieList)
+       console.log("popMovieList",popMovieList)
+        console.log("chineseMovieList",chineseMovieList)
+      this.terrMovieList = terrMovieList
+      this.popMovieList = popMovieList
+      this.chineseMovieList = chineseMovieList
+      this.japMovieList = japMovieList
+      this.newMovieList = newMovieList
+      this.hotMovieList = hotMovieList
+      console.log("terrMovieList",this.terrMovieList)
+       console.log("popMovieList",this.popMovieList)
+        console.log("chineseMovieList",this.japMovieList)
+     
+    });
+  },
+  methods: {},
+};
 </script>
