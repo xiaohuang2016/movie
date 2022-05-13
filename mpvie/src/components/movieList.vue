@@ -6,130 +6,78 @@
         <div class="content">
           <h2 class="m_3">Now in the Movie</h2>
           <div class="movie_top">
-            <div class="col-md-9 movie_box">
-              <!-- Movie variant with time -->
+            <el-row :gutter="40">
+              <el-col :span="19">
+                <div class="movie_box">
+                  <div v-for="(list, index) in movieList" :key="index">
+                    <div
+                      v-for="(item, i) in list"
+                      :key="i"
+                      :class="[index % 2 == 0 ? dark : light]"
+                    >
+                      <div class="movie__images">
+                        <a href="single.html" class="movie-beta__link">
+                          <img :src="item.img" class="img-responsive" />
+                        </a>
+                      </div>
 
-              <!-- Movie variant with time -->
+                      <div class="movie__info">
+                        <a href="single.html" class="movie__title ellipsis">{{
+                          item.nm
+                        }}</a>
 
-              <!-- Movie variant with time -->
-              <div
-                v-for="(list, index) in movieList"
-                :key="index"
-                 :class="[index % 2 == 0?dark:light]" >
-              <div :class= "setClass" data-num="21" ref="dataNum"></div>
-              
-            <div v-for="(item,index) in list"  :key="index">
-                  <div class="movie__images">
-                    <a href="single.html" class="movie-beta__link">
-                      <img :src="item.img" class="img-responsive" />
-                    </a>
-                  </div>
+                        <p class="movie__option">
+                          <a href="single.html" class="ellipsis">{{ item.star }}</a>
+                        </p>
 
-                  <div class="movie__info">
-                    <a href="single.html" class="movie__title">{{
-                      item.nm || 0
-                    }}</a>
+                        <ul class="list_6">
+                          <li>
+                            <i class="icon3"> </i>
 
-                    <p class="movie__time">80 min</p>
+                            <p>{{ item.wish }}</p>
+                          </li>
 
-                    <p class="movie__option">
-                      <a href="single.html">{{ item.star || 0 }}</a> |
-                    </p>
+                          <li>
+                            Rating : &nbsp;&nbsp;
 
-                    <ul class="list_6">
-                      <li>
-                        <i class="icon1"> </i>
-
-                        <p>{{ item.version || 0 }}</p>
-                      </li>
-
-                      <li>
-                        <i class="icon3"> </i>
-
-                        <!-- <p>{{item.wish}}</p> -->
-                      </li>
-
-                      <li>
-                        Rating : &nbsp;&nbsp;
-
-                        <!-- <p>{{item.sc}}</p> -->
-                      </li>
+                            <p>{{ item.sc }}</p>
+                          </li>
+                          <li>
+                            上映：
+                            <p>{{ item.rt }}</p>
+                          </li>
+                          <div class="clearfix"></div>
+                        </ul>
+                      </div>
 
                       <div class="clearfix"></div>
-                    </ul>
+                    </div>
                   </div>
 
                   <div class="clearfix"></div>
+
+                  <!-- Movie variant with time -->
                 </div>
-              
-              </div>
-
-              <div class="clearfix"></div>
-
-              <!-- Movie variant with time -->
-            </div>
-
-            <div class="col-md-3">
-              <div class="movie_img">
-                <div class="grid_2">
-                  <!-- <img src="images/pic6.jpg" class="img-responsive" alt="" /> -->
-
-                  <div class="caption1">
-                    <ul class="list_5 list_7">
-                      <li>
-                        <i class="icon5"> </i>
-
-                        <p>3,548</p>
-                      </li>
-                    </ul>
-
-                    <i class="icon4 icon6 icon7"> </i>
-
-                    <p class="m_3">Guardians of the Galaxy</p>
+              </el-col>
+              <el-col :span="5">
+                <div v-for="(item, index) in popMovieList" :key="index" class="pop_movie">
+                    <img :src="item.cover" class="img-responsive pop_movie_img" />
+                    <div class="caption1 pop_movie_caption">
+                        <el-row class="pop_movie_bg">
+                          <el-col :span="19"
+                            ><li><i class="icon5"> </i>{{item.cover_x}}</li></el-col>
+                          <el-col :span="5"
+                            ><li><i class="icon4"> </i></li
+                          ></el-col>
+                        </el-row>
+                      <p class="m_3">{{ item.title }}</p>
+                    </div>
                   </div>
-                </div>
-              </div>
-
-              <div class="grid_2 col_1">
-                <!-- <img src="images/pic2.jpg" class="img-responsive" alt="" /> -->
-
-                <div class="caption1">
-                  <ul class="list_3 list_7">
-                    <li>
-                      <i class="icon5"> </i>
-
-                      <p>3,548</p>
-                    </li>
-                  </ul>
-
-                  <i class="icon4 icon7"> </i>
-
-                  <p class="m_3">Guardians of the Galaxy</p>
-                </div>
-              </div>
-
-              <div class="grid_2 col_1">
-                <!-- <img src="images/pic9.jpg" class="img-responsive" alt="" /> -->
-
-                <div class="caption1">
-                  <ul class="list_3 list_7">
-                    <li>
-                      <i class="icon5"> </i>
-
-                      <p>3,548</p>
-                    </li>
-                  </ul>
-
-                  <i class="icon4 icon7"> </i>
-
-                  <p class="m_3">Guardians of the Galaxy</p>
-                </div>
-              </div>
-            </div>
+              </el-col>
+            </el-row>
 
             <div class="clearfix"></div>
           </div>
-
           <h1 class="recent">Recently Viewed</h1>
         </div>
       </div>
@@ -141,45 +89,47 @@
 <script>
 import headerPage from "@/components/base/header.vue";
 import footerPage from "@/components/base/footer.vue";
-import { hotMovieListApi } from "@/components/service/api"; // 导入我们的api接口
+import { hotMovieListApi, popMovieListApi } from "@/components/service/api"; // 导入我们的api接口
 export default {
   name: "movieList",
   components: { headerPage, footerPage },
   data() {
     return {
       movieList: [],
-      dark:"movie movie-test movie-test-dark movie-test-left ",
-      light:"movie movie-test movie-test-light movie-test-right",
-      isDark:false,
-      isLighe:false,
+      dark: "movie movie-test movie-test-dark movie-test-left ",
+      light: "movie movie-test movie-test-light movie-test-right",
+      popMovieList: [],
     };
   },
   created() {
-      console.log("dark",this.dark)
-       console.log("dark",this.dark)
     hotMovieListApi().then((res) => {
       var movieList = [],
         maxlen = 2;
       var movieListData = res.movieList;
-      for (var i = 0; i <= movieListData.length; i += maxlen) {
+      for (var i = 0; i <= movieListData.length-6; i += maxlen) {
         if (typeof movieListData[i] !== "undefined") {
           movieList.push(movieListData.slice(i, i + maxlen));
         }
       }
-      console.log("terrMovieList", movieList);
       this.movieList = movieList;
     });
-  },
-    computed:{
-        setClass(e){
-            // var index =this.$refs.dataNum.dataset.num;
-            // var mu = $(e.currentTarget).attr('data-num')
-            
-            return 'p1';
+    popMovieListApi({
+      type: "movie",
+      tag: "热门",
+      page_limit: 4,
+      page_start: 0,
+    }).then((res) => {
+      var movieList = [];
+      var movieListData = res.subjects;
+      for (var i = 0; i <= movieListData.length; i++) {
+        if (typeof movieListData[i] !== "undefined") {
+          movieList.push(movieListData[i]);
         }
-    },
-  method:{
-     
-  }
+      }
+      this.popMovieList = movieList;
+    });
+  },
+  computed: {},
+  method: {},
 };
 </script>

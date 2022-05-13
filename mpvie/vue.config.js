@@ -12,12 +12,20 @@ module.exports = defineConfig({
             // https: false,
             proxy: {
                 //名字可以自定义，这里我用的是api
-                '/api': {
+                '/maoyan': {
                     target: 'https://m.maoyan.com/ajax/movieOninfoList', //设置你调用的接口域名和端口号 别忘了加http
                     changeOrigin: true, //这里设置是否跨域
                     ws: true,
                     pathRewrite: {
-                        '^/api': '/'
+                        '^/maoyan': '/'
+                    }
+                },
+                '/douban': {
+                    target: 'https://movie.douban.com/', //设置你调用的接口域名和端口号 别忘了加http
+                    changeOrigin: true, //这里设置是否跨域
+                    ws: true,
+                    pathRewrite: {
+                        '^/douban': '/'
                     }
                 }
             }

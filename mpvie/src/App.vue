@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import indexPage from './components/movieList.vue'
+import indexPage from './components/myLogin.vue'
 
 export default {
   name: 'App',
